@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Technique Interactive - Terre Connectée</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FBF9F4;
+            color: #3D352E;
+        }
+        .tab-active {
+            background-color: #5A6E55;
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+        .tab-inactive {
+            background-color: #E9E6E0;
+            color: #5A6E55;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 1.5rem;
+            bottom: -1.5rem;
+            width: 2px;
+            background-color: #D1CFC7;
+            transform: translateX(-50%);
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 1.25rem;
+            top: 1.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #5A6E55;
+            border: 2px solid #FBF9F4;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-[#5A6E55]">Terre Connectée</h1>
+            <p class="text-lg mt-2 text-gray-600">De la terre à l'assiette pour une traçabilité claire !</p>
+        </header>
+
+        <main class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div class="p-6 md:p-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    <div class="flex flex-col items-center text-center">
+                        <img src="https://placehold.co/150x150/E9E6E0/3D352E?text=QR+Code" alt="QR Code de traçabilité" class="rounded-lg mb-2 w-32 h-32 md:w-40 md:h-40 object-cover">
+                        <p class="text-sm text-gray-500 italic">Scannez-moi pour tout savoir !</p>
+                    </div>
+                    <div class="md:col-span-2 flex items-center space-x-6">
+                         <img src="https://placehold.co/150x150/5A6E55/FFFFFF?text=Producteur" alt="Photo de l'agriculteur" class="rounded-full w-24 h-24 md:w-32 md:h-32 object-cover border-4 border-white shadow-md">
+                         <div>
+                            <h2 class="text-2xl md:text-3xl font-bold">Le Voyage de votre Produit</h2>
+                            <p class="text-gray-600 mt-1">Découvrez l'histoire derrière ce que vous mangez.</p>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <div class="flex border-b border-gray-200">
+                        <button class="tab-btn tab-active flex-1 py-3 px-2 text-center transition-colors duration-300" data-tab="artisan">L'Artisan</button>
+                        <button class="tab-btn tab-inactive flex-1 py-3 px-2 text-center transition-colors duration-300" data-tab="produit">Le Produit</button>
+                        <button class="tab-btn tab-inactive flex-1 py-3 px-2 text-center transition-colors duration-300" data-tab="parcours">Le Parcours</button>
+                    </div>
+
+                    <div id="tab-content" class="mt-6">
+                        <div class="tab-panel" id="artisan">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#5A6E55] mb-4">👨‍🌾 Votre Producteur du Cœur</h3>
+                                    <ul class="space-y-3 text-gray-700">
+                                        <li><strong>Exploitation :</strong> Domaine du Soleil</li>
+                                        <li><strong>Artisan-Producteur :</strong> Jean Dupont</li>
+                                        <li><strong>Localisation :</strong> Cavaillon, Vaucluse (84) 📍</li>
+                                        <li><strong>Notre équipe :</strong> 5 personnes dévouées 💪</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                     <h3 class="text-xl font-bold text-[#5A6E55] mb-4">🕰️ Notre Histoire</h3>
+                                     <p class="text-gray-700 leading-relaxed">Depuis trois générations, notre famille cultive cette terre avec passion. Tout a commencé en 1950, lorsque notre grand-père a planté ses premiers melons, rêvant de partager le goût du soleil provençal. Aujourd'hui, nous perpétuons cet héritage avec le même amour du produit.</p>
+                                </div>
+                                 <div>
+                                    <h3 class="text-xl font-bold text-[#5A6E55] mb-4">🌿 Notre Engagement & Savoir-Faire</h3>
+                                    <ul class="space-y-3 text-gray-700">
+                                         <li><strong>Mode de culture :</strong> Agriculture Raisonnée 💚</li>
+                                         <li><strong>Pratiques clés :</strong> Récolte manuelle, irrigation au goutte-à-goutte, utilisation d'auxiliaires naturels. ✋💧🐞</li>
+                                         <li><strong>Certifications :</strong> IGP Melon de Cavaillon, HVE. 🏅</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#5A6E55] mb-4">🌱 Nos Terroirs d'Exception</h3>
+                                     <ul class="space-y-3 text-gray-700">
+                                         <li><strong>Lieu de culture :</strong> Les Garrigues, en plein cœur du Luberon.</li>
+                                         <li><strong>Spécificité du sol :</strong> Terre argilo-calcaire, idéale pour le melon.</li>
+                                         <li><strong>Notre Climat :</strong> Ensoleillement généreux de Provence. ☀️</li>
+                                     </ul>
+                                </div>
+                            </div>
+                            <div class="bg-[#E9E6E0] p-4 rounded-lg shadow-inner mt-8 border-l-4 border-[#5A6E55]">
+                                <p class="italic text-gray-800">"Qui mange ma salade n'est jamais malade ! C'est avec passion que je cultive cette salade pour vous offrir le meilleur de ma terre. J'espère qu'elle vous apportera autant de plaisir que j'en ai eu à la faire pousser."</p>
+                                <p class="text-right font-semibold mt-2">- Jean Dupont</p>
+                            </div>
+                        </div>
+
+                        <div class="tab-panel hidden" id="produit">
+                           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#5A6E55] mb-4">🥕 Le Produit que vous tenez !</h3>
+                                    <ul class="space-y-3 text-gray-700">
+                                        <li><strong>Nom :</strong> Melon Charentais Jaune</li>
+                                        <li><strong>Saisonnalité :</strong> Récolté de juin à août 📅</li>
+                                        <li><strong>Récolte du lot :</strong> 20/06/2025 🗓️</li>
+                                        <li><strong>Conditionnement :</strong> 20/06/2025 📦</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#5A6E55] mb-4">🍽️ Nos Idées Recettes & Conseils</h3>
+                                    <ul class="space-y-3 text-gray-700">
+                                        <li><strong>Conservation :</strong> À température ambiante jusqu'à maturité, puis au frais. 🌡️</li>
+                                        <li><strong>Le petit plus :</strong> Pour les fraises, un filet de vinaigre balsamique relève leur saveur ! 🤫</li>
+                                        <li><strong>Idée recette :</strong> Salade fraîcheur : melon, feta, menthe et un filet d'huile d'olive. 🥗</li>
+                                    </ul>
+                                    <img src="https://placehold.co/600x400/E9E6E0/3D352E?text=Salade+Melon+Feta" alt="Recette de salade au melon" class="rounded-lg mt-4 w-full object-cover">
+                                </div>
+                           </div>
+                        </div>
+
+                        <div class="tab-panel hidden" id="parcours">
+                            <h3 class="text-xl font-bold text-[#5A6E55] mb-6 text-center">🚚 De la Terre à Votre Assiette</h3>
+                            <div class="relative max-w-md mx-auto">
+                                <div class="timeline-item relative pl-10 pb-8">
+                                    <div class="timeline-dot"></div>
+                                    <p class="font-semibold">🌅 Ramassage</p>
+                                    <p class="text-sm text-gray-600">Récolté à l'aube, à la main, pour préserver une fraîcheur maximale.</p>
+                                </div>
+                                <div class="timeline-item relative pl-10 pb-8">
+                                    <div class="timeline-dot"></div>
+                                    <p class="font-semibold">🎀 Conditionnement</p>
+                                    <p class="text-sm text-gray-600">Trié et emballé avec le plus grand soin le jour même de la récolte.</p>
+                                </div>
+                                <div class="timeline-item relative pl-10 pb-8">
+                                    <div class="timeline-dot"></div>
+                                    <p class="font-semibold">🚛 Expédition par Terre Connectée</p>
+                                    <p class="text-sm text-gray-600">Transporté en camion réfrigéré pour garantir la chaîne du froid.</p>
+                                </div>
+                                <div class="timeline-item relative pl-10">
+                                    <div class="timeline-dot"></div>
+                                    <p class="font-semibold">⏱️ Arrivée en Magasin</p>
+                                    <p class="text-sm text-gray-600">Disponible sur vos étals en moins de 24h.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <footer class="bg-[#E9E6E0] p-6 text-center">
+                 <h4 class="font-bold text-[#5A6E55]">Suivez le producteur !</h4>
+                 <div class="flex justify-center space-x-4 mt-2 text-gray-600">
+                    <a href="#" class="hover:text-[#5A6E55]">Site Web</a>
+                    <span>•</span>
+                    <a href="#" class="hover:text-[#5A6E55]">Instagram</a>
+                 </div>
+            </footer>
+        </main>
+
+        <section class="mt-10 bg-white rounded-2xl shadow-lg p-6">
+            <h3 class="text-xl font-bold text-[#5A6E55] mb-4 text-center">L'Intérêt de Terre Connectée</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                    <p class="text-3xl mb-2">🧑‍🤝‍🧑</p>
+                    <h4 class="font-semibold mb-1">Pour le Consommateur</h4>
+                    <p class="text-sm text-gray-600">Une confiance renforcée et une expérience d'achat ludique et transparente.</p>
+                </div>
+                 <div>
+                    <p class="text-3xl mb-2">🏪</p>
+                    <h4 class="font-semibold mb-1">Pour le Revendeur</h4>
+                    <p class="text-sm text-gray-600">Un argument de vente unique et une vraie différenciation par la qualité.</p>
+                </div>
+                 <div>
+                    <p class="text-3xl mb-2">🌱</p>
+                    <h4 class="font-semibold mb-1">Pour le Producteur</h4>
+                    <p class="text-sm text-gray-600">Une reconnaissance directe de son savoir-faire et de son engagement.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetPanelId = tab.dataset.tab;
+
+                    // Update tab styles
+                    tabs.forEach(t => {
+                        t.classList.remove('tab-active');
+                        t.classList.add('tab-inactive');
+                    });
+                    tab.classList.remove('tab-inactive');
+                    tab.classList.add('tab-active');
+
+                    // Show/hide panels
+                    panels.forEach(panel => {
+                        if (panel.id === targetPanelId) {
+                            panel.classList.remove('hidden');
+                        } else {
+                            panel.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
